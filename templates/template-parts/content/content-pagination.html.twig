@@ -1,0 +1,20 @@
+{% if pagination %}
+    <nav class="navigation pagination" role="navigation">
+        <h2 class="screen-reader-text">Posts navigation</h2>
+        <div class="nav-links">
+            {% if pagination.prev|default() %}
+                <a class="prev page-numbers"  href="{{ pagination.prev.link }}">
+                    <span class="nav-prev-text">{{ pagination.prev.text }}</span>
+                </a>
+            {% endif %}
+            {% for page in pagination.pages %}
+                <a class="page-numbers" {% if not page.current %}href="{{ page.link }}"{% endif %}>{{ page.text }}</a>
+            {% endfor %}
+            {% if pagination.next|default() %}
+                <a class="next page-numbers" href="{{ pagination.next.link }}">
+                    <span class="nav-next-text">{{ pagination.next.text }}</span>
+                </a>
+            {% endif %}
+        </div>
+    </nav>
+{% endif %}

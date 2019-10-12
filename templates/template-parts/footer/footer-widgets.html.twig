@@ -1,0 +1,19 @@
+{#
+ # Displays the footer widget area
+ #
+ # @package WordPress
+ # @subpackage Twenty_Nineteen
+ # @since 1.0.0
+ #}
+
+{% if is_active_sidebar( 'footer' )  %}
+
+	<aside class="widget-area" role="complementary" aria-label="{{ _e( 'Footer', 'twentynineteen' ) }}">
+
+		<div class="widget-column footer-widget-1">
+			{{ dynamic_sidebar( 'footer' ) }}
+		</div>
+
+	</aside><!-- .widget-area -->
+
+{% endif %}

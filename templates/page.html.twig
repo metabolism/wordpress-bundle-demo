@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{#
+ # The template for displaying all single posts
+ #
+ # @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ #
+ # @package WordPress
+ # @subpackage Twenty_Nineteen
+ # @since 1.0.0
+ #}
+
+{% block body %}
+	<section id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+			{% include 'template-parts/content/content-page.html.twig' %}
+			{% include 'template-parts/content/content-nav.html.twig' %}
+
+			{% if post.comment_status == 'open' or post.comment_count %}
+				{% include 'comments.html.twig' %}
+			{% endif %}
+
+		</main><!-- #main -->
+	</section><!-- #primary -->
+
+{% endblock %}

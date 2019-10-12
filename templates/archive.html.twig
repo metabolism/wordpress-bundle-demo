@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+{#
+ # The template for displaying archive pages
+ #
+ # @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ #
+ # @package WordPress
+ # @subpackage Twenty_Nineteen
+ # @since 1.0.0
+ #}
+
+{% block body %}
+
+	<section id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+			<header class="page-header">
+				<h1 class="page-title">{{ term.title }}</h1>
+			</header><!-- .page-header -->
+
+			{% if posts|default() %}
+				{# Load posts loop. #}
+				{% for post in posts %}
+					{% include 'template-parts/content/content.html.twig' %}
+				{% endfor %}
+
+				{# Previous/next page navigation. #}
+				{% include 'template-parts/content/content-pagination.html.twig' %}
+
+			{% else %}
+
+				{# If no content, include the "No posts found" template. #}
+				{% include 'template-parts/content/content-none.html.twig' %}
+
+			{% endif %}
+		</main><!-- #main -->
+	</section><!-- #primary -->
+
+{% endblock %}

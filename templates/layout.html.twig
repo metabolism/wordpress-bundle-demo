@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="{{ locale|default('en') }}" class="utf8" prefix="og: http://ogp.me/ns#">
+
+<head>
+	<meta charset="{{ bloginfo.charset }}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="profile" href="https://gmpg.org/xfn/11" />
+
+	<title>{{ wp_title|raw }}</title>
+
+	{% block stylesheets %}
+		{{ encore_entry_link_tags('app') }}
+	{% endblock %}
+
+	{{ wp_head() }}
+</head>
+
+<body class="{{ body_class }}">
+
+<div id="page" class="site">
+
+	{% if maintenance_mode|default() %}
+
+		{% block maintenance %}
+			<h1>Maintenance</h1>
+		{% endblock maintenance %}
+
+	{% else %}
+		{% block header %}
+			{% include 'header.html.twig' %}
+		{% endblock header %}
+
+		<div id="content" class="site-content">
+
+			{% block body %}{% endblock body %}
+		</div>
+
+		{% block footer %}
+			{% include 'footer.html.twig' %}
+		{% endblock footer %}
+	{% endif %}
+
+</div>
+
+{{ wp_footer() }}
+
+{% block javascripts %}
+	{{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+</body>
+</html>

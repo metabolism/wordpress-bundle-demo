@@ -1,0 +1,25 @@
+{#
+ # Template part for displaying a message that posts cannot be found
+ #
+ # @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ #
+ # @package WordPress
+ # @subpackage Twenty_Nineteen
+ # @since 1.0.0
+ #}
+
+<section class="no-results not-found">
+
+	<header class="page-header">
+		<h1 class="page-title">{{ _e( 'Nothing Found', 'twentynineteen' ) }}</h1>
+	</header><!-- .page-header -->
+
+	<div class="page-content">
+		{% if fn('is_search') %}
+			<p>{{ _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentynineteen' ) }}</p>
+		{% else %}
+			<p>{{ _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'twentynineteen' ) }}</p>
+		{% endif %}
+		{{ search_form() }}
+	</div><!-- .page-content -->
+</section><!-- .no-results -->

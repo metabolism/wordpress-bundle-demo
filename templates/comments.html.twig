@@ -1,0 +1,59 @@
+{#
+ # The template for displaying comments
+ #
+ # This is the template that displays the area of the page that contains both the current comments
+ # and the comment form.
+ #
+ # @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ #
+ # @package WordPress
+ # @subpackage Twenty_Nineteen
+ # @since 1.0.0
+ #}
+
+{#
+ # If the current post is protected by a password and
+ # the visitor has not yet entered the password we will
+ # return early without loading the comments.
+ #}
+
+{% if not post.password|length %}
+<div id="comments" class="comments-area{{ post.comment_status != 'open' ? 'comments-closed' : ''}}">
+	<div class="comments-title-wrap{{ not post.comment_count ? ' no-responses': '' }}">
+		<h2 class="comments-title">
+			{% if post.comment_status == 'open' %}
+				{{ _e( post.comment_count ? 'Join the Conversation' : 'Leave a comment', 'twentynineteen' ) }}
+			{% else %}
+				{% if ( post.comment_count == 1) %}
+					{{ _x( 'One reply on &ldquo;%s&rdquo;', 'comments title', 'twentynineteen' )|format(post.title) }}
+				{% else %}
+					{{ _x( '%1$s replies on &ldquo;%2$s&rdquo;', 'comments title', 'twentynineteen' )|format(post.comment_count, post.title) }}
+				{% endif %}
+			{% endif %}
+		</h2><!-- .comments-title -->
+		{% if post.comment_status == 'open' and post.comment_count %}
+			{% include 'template-parts/post/discussion-meta.html.twig' %}
+		{% endif %}
+	</div><!-- .comments-title-flex -->
+
+	{% if post.comment_count %}
+		<ol class="comment-list">
+			{% for comment in post.getComments %}
+				<li id="comment-{{ comment.ID }}" class="comment {{ loop.index is odd ? 'odd thread-odd' : 'even thread-even' }} depth-1 parent">
+					{% include 'template-parts/content/content-comment.html.twig' with  { depth: 1 } %}
+				</li>
+			{% endfor %}
+		</ol><!-- .comment-list -->
+	{% endif %}
+
+	{% if post.comment_status == 'open' %}
+		<div class="comment-form-flex">
+			{{ comment_form(post.ID) }}
+		</div>
+	{% else %}
+		<p class="no-comments">
+			{{ _e( 'Comments are closed.', 'twentynineteen' ) }}
+		</p>
+	{% endif %}
+</div><!-- #comments -->
+{% endif %}

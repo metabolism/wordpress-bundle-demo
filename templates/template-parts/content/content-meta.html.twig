@@ -1,0 +1,18 @@
+{% if post|default() %}
+
+    {% set author = User(post.author) %}
+    <span class="byline">
+        <span class="author vcard">
+            <a class="url fn n" href="{{ author.link }}">{{ author.display_name }}</a>
+        </span>
+    </span>
+
+    <span class="posted-on"><time class="entry-date published updated" datetime="{{ post.date_gmt }}">{{ post.date }}</time></span>
+
+    {% set category = post.getTerm() %}
+    {% if category %}
+        <span class="cat-links">
+            <a href="{{ category.link }}">{{ category.title }}</a>
+        </span>
+    {% endif %}
+{% endif %}

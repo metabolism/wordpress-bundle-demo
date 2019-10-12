@@ -1,0 +1,24 @@
+{% if post.prev or post.next %}
+    <nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+        <div class="nav-links">
+            {% if post.prev %}
+                <div class="nav-previous">
+                    <a href="{{ post.prev.link }}" rel="prev">
+                        <span class="meta-nav">{{ __( 'Previous Post', 'twentynineteen' )  }}</span>
+                        <br>
+                        <span class="post-title">{{ post.prev.title }}</span>
+                    </a>
+                </div>
+            {% endif %}
+            {% if post.next %}
+                <div class="nav-next">
+                    <a href="{{ post.next.link }}" rel="next">
+                        <span class="meta-nav">{{ __( 'Next Post', 'twentynineteen' )  }}</span>
+                        <br>
+                        <span class="post-title">{{ post.next.title }}</span>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </nav>
+{% endif %}

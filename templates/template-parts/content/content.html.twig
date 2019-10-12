@@ -1,0 +1,42 @@
+{#
+ # Template part for displaying posts
+ #
+ # @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ #
+ # @package WordPress
+ # @subpackage Twenty_Nineteen
+ # @since 1.0.0
+ #
+ #}
+
+<article id="post-{{ post.ID }}" class="{{ post.class }}">
+	<header class="entry-header">
+		{% if post.sticky and fn('is_home') and not fn('is_paged') %}
+			<span class="sticky-post">{{ _x( 'Featured', 'post', 'twentynineteen' ) }}</span>
+		{% endif %}
+		{% if fn('is_singular') %}
+			<h1 class="entry-title">{{ post.title }}</h1>
+		{% else %}
+			<h2 class="entry-title"><a href="{{ post.link }}" rel="bookmark">{{ post.title }}</a></h2>
+		{% endif %}
+	</header><!-- .entry-header -->
+
+	{% if post.thumbnail %}
+		<figure class="post-thumbnail">
+			<img src="{{ post.thumbnail.resize(1568) }}" alt="{{ post.thumbnail.alt }}">
+		</figure><!-- .post-thumbnail -->
+	{% endif %}
+
+	<div class="entry-content">
+		{% set content = post.content|more %}
+		{{ content[0]|raw }}
+		{% if content|length > 1 %}
+			<a href="{{ post.link }}">{{ __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentynineteen' )|format(post.title)|raw }}</a>
+		{% endif %}
+	</div>
+		<!-- .entry-content -->
+
+	<footer class="entry-footer">
+		{% include 'template-parts/content/content-meta.html.twig' %}
+	</footer><!-- .entry-footer -->
+</article><!-- #post-{{ post.ID }}-->

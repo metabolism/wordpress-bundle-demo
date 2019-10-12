@@ -1,0 +1,48 @@
+{#
+ # Displays header site branding
+ #
+ # @package WordPress
+ # @subpackage Twenty_Nineteen
+ # @since 1.0.0
+ #
+ #}
+<div class="site-branding">
+
+	{% if fn('has_custom_logo') %}
+		<div class="site-logo">{{ fn('get_custom_logo') }}</div>
+	{% endif %}
+
+	{% if bloginfo.name|length %}
+		{% if is_front_page %}
+			<h1 class="site-title"><a href="{{ home_url}}" rel="home">{{ bloginfo.name }}</a></h1>
+		{% else %}
+			<p class="site-title"><a href="{{ home_url}}" rel="home">{{ bloginfo.name }}</a></p>
+		{% endif %}
+	{% endif %}
+
+	{% if bloginfo.description|length %}
+		<p class="site-description">
+			{{ bloginfo.description }}
+		</p>
+	{% endif %}
+
+	{% if menu.main_menu|default() and menu.main_menu.items|length %}
+		<nav id="site-navigation" class="main-navigation" aria-label="{{ _e( 'Top Menu', 'twentynineteen' )  }}">
+			<ul id="menu-1" class="main-menu">
+				{% for item in menu.main_menu.items %}
+					<a href="{{ item.link }}" class="{{ item.class }}" target="{{ item.target }}">{{ item.title }}</a>
+				{% endfor %}
+			</ul>
+		</nav><!-- #site-navigation -->
+	{% endif %}
+
+	{% if menu.social|default() and menu.social.items|length %}
+		<nav class="social-navigation" aria-label="{{ _e( 'Social Links Menu', 'twentynineteen' ) }}">
+			<ul id="social" class="social-links-menu">
+				{% for item in menu.social.items %}
+					<a href="{{ item.link }}" class="{{ item.class }}" target="{{ item.target }}"><span class="screen-reader-text">{{ item.title }}</span></a>
+				{% endfor %}
+			</ul>
+		</nav><!-- .social-navigation -->
+	{% endif %}
+</div><!-- .site-branding -->

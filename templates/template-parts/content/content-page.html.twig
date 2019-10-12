@@ -1,0 +1,24 @@
+{#
+ # Template part for displaying page content in page.php
+ #
+ # @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ #
+ # @package WordPress
+ # @subpackage Twenty_Nineteen
+ # @since 1.0.0
+ #
+ #}
+
+<article id="post-{{ post.ID }}" class="{{ post.class }}">
+
+	{% if not post.thumbnail %}
+		<header class="entry-header">
+			{% include 'template-parts/header/entry-header.html.twig' %}
+		</header>
+	{% endif %}
+
+	<div class="entry-content">
+		{{ post.content|raw }}
+	</div><!-- .entry-content -->
+
+</article><!-- #post-{{ post.ID }} -->

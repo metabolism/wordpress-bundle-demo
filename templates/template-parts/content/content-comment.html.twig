@@ -1,0 +1,34 @@
+<article id="div-comment-{{ comment.ID }}" class="comment-body">
+	<footer class="comment-meta">
+		<div class="comment-author vcard">
+			<b class="fn">{{ comment.author }}</b></div>
+		<!-- .comment-author -->
+		<div class="comment-metadata">
+			<time datetime="{{ comment.date_gmt }}">{{ comment.date }}</time>
+		</div><!-- .comment-metadata -->
+	</footer><!-- .comment-meta -->
+	<div class="comment-content">{{ comment.content|raw }}</div>
+	<!-- .comment-content -->
+</article><!-- .comment-body -->
+
+<div class="comment-reply">
+	{% if current_user %}
+		<a rel="nofollow" class="comment-reply-link" href="">
+			{{ __( 'Reply to %s' )|format(comment.author) }}
+		</a>
+	{% else %}
+		<a rel="nofollow" class="comment-reply-login" href="{{ login_url(post.link) }}">
+			{{ __( 'Log in to Reply' ) }}
+		</a>
+	{% endif %}
+</div>
+
+{% if comment.replies|length %}
+<ol class="children">
+	{% for reply in comment.replies %}
+	<li id="comment-{{ reply.ID }}" class="comment {{ loop.index is odd ? 'odd' : 'even' }} alt depth-{{ depth+1 }}">
+		{% include 'template-parts/content/content-comment.html.twig' with  { comment: reply, depth: depth+1 } %}
+	</li>
+	{% endfor %}
+</ol>
+{% endif %}

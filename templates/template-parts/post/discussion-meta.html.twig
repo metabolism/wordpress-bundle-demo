@@ -1,0 +1,19 @@
+{#
+ # The template for displaying Current Discussion on posts
+ #
+ # @package WordPress
+ # @subpackage Twenty_Nineteen
+ # @since 1.0.0
+ #}
+
+<div class="discussion-meta">
+	<p class="discussion-meta-info">
+		<span>
+			{% if post.comment_count  %}
+				{{ _n( '%d Comment', '%d Comments', post.comment_count, 'twentynineteen' )|format(post.comment_count) }}
+			{% else %}
+				{{ __( 'No comments', 'twentynineteen' ) }}
+			{% endif %}
+		</span>
+	</p>
+</div><!-- .discussion-meta -->

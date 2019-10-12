@@ -1,0 +1,16 @@
+{#
+ # Displays the post header
+ #
+ # @package WordPress
+ # @subpackage Twenty_Nineteen
+ # @since 1.0.0
+ #
+ #}
+
+<h1 class="entry-title">{{ post.title }}</h1>
+
+{% if not fn('is_page') %}
+    <div class="entry-meta">
+        {% include 'template-parts/content/content-meta.html.twig' %}
+    </div><!-- .entry-meta -->
+{% endif %}

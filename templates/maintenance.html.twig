@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{#
+ # The maintenance template file
+ #
+ # @package WordPress
+ # @subpackage Twenty_Nineteen
+ # @since 1.0.0
+#}
+{% block body %}
+
+	<section id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+			<section class="no-results not-found">
+
+				<header class="page-header">
+					<h1 class="page-title">{{ _e( 'Maintenance', 'twentynineteen' ) }}</h1>
+				</header><!-- .page-header -->
+
+				<div class="page-content">
+						<p>{{ _e( 'Our website is undergoing some maintenance. We\'ll be back soon.', 'twentynineteen' ) }}</p>
+				</div><!-- .page-content -->
+			</section><!-- .no-results -->
+
+
+		</main><!-- .site-main -->
+	</section><!-- .content-area -->
+
+{% endblock %}

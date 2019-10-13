@@ -14,6 +14,12 @@ class BlogController extends AbstractController
 		return $this->render('index.html.twig', $context->toArray());
 	}
 
+	public function maintenanceAction(Context $context)
+	{
+        $context->add('wp_title', 'Maintenance');
+		return $this->render('maintenance.html.twig', $context->toArray());
+	}
+
 	public function pageAction(Context $context)
 	{
 		$post = $context->getPost();
@@ -26,7 +32,7 @@ class BlogController extends AbstractController
 			return $response;
 		}
 
-		return $this->render('page.html.twig', $context->toArray());
+		return $this->render('single.html.twig', $context->toArray());
 	}
 
 	public function guideAction(Context $context)
@@ -41,7 +47,7 @@ class BlogController extends AbstractController
             return $response;
         }
 
-		return $this->render('page.html.twig', $context->toArray());
+		return $this->render('single.html.twig', $context->toArray());
 	}
 
 	public function searchAction(Context $context)

@@ -28,6 +28,7 @@
 /public/edition
 /public/cache
 /public/wp-bundle
+/public/wp-config.php
 ###< metabolism/wordpress-bundle ###
 
 ###> symfony/webpack-encore-bundle ###

@@ -19,21 +19,16 @@
 
 <div id="page" class="site">
 
-	{% if maintenance_mode|default() %}
+	{% block header %}
+		{% include 'header.html.twig' %}
+	{% endblock header %}
 
-		{% block maintenance %}
-			<h1>Maintenance</h1>
-		{% endblock maintenance %}
+	<div id="content" class="site-content">
 
-	{% else %}
-		{% block header %}
-			{% include 'header.html.twig' %}
-		{% endblock header %}
+		{% block body %}{% endblock body %}
+	</div>
 
-		<div id="content" class="site-content">
-
-			{% block body %}{% endblock body %}
-		</div>
+	{% if not maintenance_mode|default() %}
 
 		{% block footer %}
 			{% include 'footer.html.twig' %}

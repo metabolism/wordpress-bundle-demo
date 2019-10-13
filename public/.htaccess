@@ -65,7 +65,7 @@
 #php_value max_execution_time 300
 #php_value max_input_time 300
 
-# Begin Rocket
+# Begin wordpress-bundle
 
 Options -Indexes
 
@@ -94,8 +94,4 @@ Options -Indexes
     RewriteRule (.*) index.php [QSA,L]
 </IfModule>
 
-# End Rocket
-
-# BEGIN WordPress
-
-# END WordPress
+# End wordpress-bundle

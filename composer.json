@@ -1,6 +1,8 @@
 {
     "type": "project",
     "license": "proprietary",
+    "version": "1.0.0",
+    "description": "Implementation of the Twenty Nineteen Wordpress theme for Symfony wordpress-bundle.",
     "prefer-stable": true,
     "minimum-stability": "dev",
     "require": {

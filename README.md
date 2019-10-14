@@ -33,7 +33,7 @@ TABLE_PREFIX=wp_
 #### 4 - Install Wordpress
 
 ```
-symfony server:start && symfony open:local
+symfony server:start -d && symfony open:local
 ```
 
 #### 5 - Clear cache

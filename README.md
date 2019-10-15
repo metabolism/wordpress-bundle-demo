@@ -12,7 +12,7 @@ Sass and js files are compiled using Symfony Encore, source are in /assets, comp
 #### 1 - Clone the project
 
 ```
-git clone git@github.com:wearemetabolism/wordpress-bundle-demo.git my_site
+git clone https://github.com/wearemetabolism/wordpress-bundle-demo.git my_site
 ```
 
 #### 2 - Install vendors

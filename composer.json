@@ -1,6 +1,7 @@
 {
+    "name": "metabolism/wordpress-bundle-demo",
     "type": "project",
-    "license": "proprietary",
+    "license": "MIT",
     "version": "1.0.0",
     "description": "Implementation of the Twenty Nineteen Wordpress theme for Symfony wordpress-bundle.",
     "prefer-stable": true,

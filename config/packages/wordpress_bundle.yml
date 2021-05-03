@@ -4,23 +4,7 @@
 ##                                           ##
 ###############################################
 
-
-####################
-##    Security    ##
-####################
-
-key: #https://api.wordpress.org/secret-key/1.1/salt/
-  auth : 'O-} !h|JpOq^w,CXn+O5=o3MvkN_So+ O0-chs$+a>KJq*i~/!ykEd<]IsPdgI#6'
-  secure_auth : 'r HvS?mdf^4xc.Iy^G*<ZliwL5r_w.]CUWIu|j0{sfq-M)k:Lhi-),qCDcN<Yy+w'
-  logged_in : 'u`UAyT)Wp0bT&Z.^e3RWTWDs?Je9K0UBQDJqG$W*yb9YG1yl,|*:LQV^ZUt|Q~#.'
-  nonce : 'cV9Q^z7H{oI>H6>>vLHQYB[)1N&#ur(# Iqw*k?r-FkQ+#eo9<R^1N?uo.*N~!J5'
-
-salt:
-  auth : 'w9J/dNw/bv}@Z#/YcrjPcH$^_[ni&4tji0JA0?na}yTw#0}yuZW>BXDVVjVGA+vk'
-  secure_auth : 'T7ntE>-j*2G3Qosn;0?|7{aqs&SU) }_S ~6f5k~PTedeX^jNe&T h)9(k4nT2Rq'
-  logged_in : 'w/iowiks]_i5b#/SqYuD2`28o</-L|P4H3vq@!<OrH 7Q!gxB[Q4m`/*CiVdylGs'
-  nonce : 'gelPRQb4NzO=4pOG_5YnuN(5G~YJCIutY*BL%!:ds(TqwDd;F[PsI,gT_1J-9;;D'
-
+version: 1.0
 
 #########################
 ##    Image options    ##
@@ -29,6 +13,7 @@ salt:
 image:
   compression: 90 #on the fly compression ration
   show_meta: false #add metadata to Image entity
+  #return_format: url|id|object
   resize: #resize image on upload to save server space
     max_width: 1920
     max_height: 2160
@@ -43,7 +28,7 @@ maintenance: true
 
 ## Hide pages from menu
 remove_menu_page:
-#  - edit-comments.php #Comments
+  - edit-comments.php #Comments
 #  - index.php #Dashboard
 #  - jetpack #Jetpack
 #  - upload.php #Media
@@ -83,7 +68,7 @@ mce_buttons:
   - wp_adv
   - dfw
 
-editor_style: backoffice.css
+#editor_style: backoffice.css
 
 ##################
 ##    System    ##
@@ -91,26 +76,18 @@ editor_style: backoffice.css
 
 ## Add theme support
 support:
-  - template #uncomment for api only backoffice
+  - thumbnail #add thumbnails to page
   - page #enable page
   - post #enable post
   - tag #enable tag taxonomy for post
   - category #enable category taxonomy for post
-  - post-thumbnails #add thumbnails to page
-  - automatic-feed-links
-  - title-tag
-  - customize-selective-refresh-widgets
-  - wp-block-styles
-  - align-wide
-  - responsive-embeds
-  - custom-logo:
-      height : 190
-      width : 190
-      flex-width : false
-      flex-height : false
-  #- post-formats: # https://wordpress.org/support/article/post-formats/#supported-formats
+ #- post-formats: # https://wordpress.org/support/article/post-formats/#supported-formats
   #  - video
   #  - gallery
+
+## Use Wordpress as a headless cms
+#headless:
+#  mapping: true
 
 ## Allow multisite installation
 install-multisite: true
@@ -132,8 +109,8 @@ install-multisite: true
 
 acf:
   settings:
+    use_entity: true #add new optimised return format
     autoload: true #autoload options
-    google_api_key: XXXYYYZZZ #https://developers.google.com/maps/documentation/javascript/get-api-key
   options_page: #add option pages https://www.advancedcustomfields.com/resources/options-page/
     - 'Personnalisation'
   toolbars: #customize wysiwyg toolbar
@@ -197,9 +174,10 @@ acf:
 ################
 
 menu:
-  main_menu: Primary
-  footer: Footer Menu
-  social: Social Links Menu
+  depth: 1
+  register:
+    footer: Footer
+    header: Header
 
 
 ###################
@@ -214,7 +192,6 @@ sidebar: # https://developer.wordpress.org/themes/functionality/sidebars/#regist
     after_widget : '</section>'
     before_title : '<h2 class="widget-title">'
     after_title : '</h2>'
-
 
 ##########################
 ##    New post types    ##
@@ -339,6 +316,7 @@ taxonomy: # https://codex.wordpress.org/Function_Reference/register_taxonomy
 #  translator:
 #    display_name: Traducteur
 #    force: true
+#    #inherit: editor
 #    capabilities:
 #      read: true
 #      publish: false
@@ -380,15 +358,15 @@ rewrite_rules:
     - feed
     - comment
 
-#########################
+################
 ##    Misc    ##
-#########################
+################
 
 domain_name: twentynineteen # MO/PO traductions
 
 #search: # change search settings
 # posts_per_page: 12
 
-## controller name used when importing @WordpressBundle/Routing/permastructs.php
+## controller name used when importing @WordpressBundle/config/routing.php
 extra_permastructs:
   controller: BlogController

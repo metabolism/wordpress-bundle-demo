@@ -1,1 +1,0 @@
-../vendor/metabolism/wordpress-bundle/README.md

@@ -9,36 +9,45 @@ Sass and js files are compiled using Symfony Encore, source are in /assets, comp
 
 ## Installation
 
-#### 1 - Clone the project
+#### 1 - Clone the repo
 
-```
-git clone https://github.com/wearemetabolism/wordpress-bundle-demo.git my_site
+```shell
+$ git clone https://github.com/wearemetabolism/wordpress-bundle-demo.git my_site
 ```
 
 #### 2 - Install vendors
 
-```
-composer install && npm install && npm run build
+```shell
+$ composer install && npm install && npm run build
 ```
 
-#### 3 - Edit .env or create .env.local
+#### 3 - Build assets
 
+```shell
+$ npm run build
 ```
+
+#### 4 - Create .env.local
+
+```dotenv
 ###> metabolism/wordpress-bundle ###
 DATABASE_URL=mysql://user:pwd@host:3306/dbname
 TABLE_PREFIX=wp_
+
+## use https://roots.io/salts.html to generate salts
+AUTH_KEY=xxxxxx
+SECURE_AUTH_KEY=xxxxxx
+LOGGED_IN_KEY='xxxxxx
+NONCE_KEY=xxxxxx
+AUTH_SALT=xxxxxx
+SECURE_AUTH_SALT=xxxxxx
+LOGGED_IN_SALT=xxxxxx
+NONCE_SALT=xxxxxx
 ###< metabolism/wordpress-bundle ###
 ```
 
-#### 4 - Install Wordpress
+#### 5 - Start server and install Wordpress
 
 ```
-symfony server:start -d && symfony open:local
+symfony serve
 ```
-
-#### 5 - Clear cache
-
-```
-./bin/console cache:clear
-```
-

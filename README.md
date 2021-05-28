@@ -18,7 +18,7 @@ $ git clone https://github.com/wearemetabolism/wordpress-bundle-demo.git my_site
 #### 2 - Install vendors
 
 ```shell
-$ composer install && npm install && npm run build
+$ composer install && npm install
 ```
 
 #### 3 - Build assets
@@ -31,13 +31,13 @@ $ npm run build
 
 ```dotenv
 ###> metabolism/wordpress-bundle ###
-DATABASE_URL=mysql://user:pwd@host:3306/dbname
+DATABASE_URL=mysql://user:pwd@localhost:3306/dbname
 TABLE_PREFIX=wp_
 
 ## use https://roots.io/salts.html to generate salts
 AUTH_KEY=xxxxxx
 SECURE_AUTH_KEY=xxxxxx
-LOGGED_IN_KEY='xxxxxx
+LOGGED_IN_KEY=xxxxxx
 NONCE_KEY=xxxxxx
 AUTH_SALT=xxxxxx
 SECURE_AUTH_SALT=xxxxxx
@@ -46,8 +46,26 @@ NONCE_SALT=xxxxxx
 ###< metabolism/wordpress-bundle ###
 ```
 
-#### 5 - Start server and install Wordpress
+#### 5 - Create empty database
+
+```sql
+CREATE DATABASE dbname;
+```
+
+#### 6 - Start server and install Wordpress
 
 ```
 symfony serve
 ```
+
+#### 7 - Update .env.local
+
+```dotenv
+WP_INSTALLED=1
+```
+
+## Troubleshooting
+
+### Frontpage display Symfony welcome screen
+
+Please visit Wordpress permalink settings page tu flush rewrite cache

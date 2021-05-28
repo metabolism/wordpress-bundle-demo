@@ -1,6 +1,6 @@
+.idea
 composer.lock
 package-lock.json
-symfony.lock
 
 ###> symfony/framework-bundle ###
 /.env.local

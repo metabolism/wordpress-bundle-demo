@@ -9,20 +9,20 @@
 <div class="site-branding">
 
 	{% if fn('has_custom_logo') %}
-		<div class="site-logo">{{ fn('get_custom_logo') }}</div>
+		<div class="site-logo">{{ fn('get_custom_logo')|raw }}</div>
 	{% endif %}
 
 	{% if bloginfo.name|length %}
 		{% if is_front_page %}
-			<h1 class="site-title"><a href="{{ home_url}}" rel="home">{{ bloginfo.name }}</a></h1>
+			<h1 class="site-title"><a href="{{ home_url}}" rel="home">{{ bloginfo.name|raw }}</a></h1>
 		{% else %}
-			<p class="site-title"><a href="{{ home_url}}" rel="home">{{ bloginfo.name }}</a></p>
+			<p class="site-title"><a href="{{ home_url}}" rel="home">{{ bloginfo.name|raw }}</a></p>
 		{% endif %}
 	{% endif %}
 
 	{% if bloginfo.description|length %}
 		<p class="site-description">
-			{{ bloginfo.description }}
+			{{ bloginfo.description|raw }}
 		</p>
 	{% endif %}
 
@@ -30,7 +30,7 @@
 		<nav id="site-navigation" class="main-navigation" aria-label="{{ _e( 'Top Menu', 'twentynineteen' )  }}">
 			<ul id="menu-1" class="main-menu">
 				{% for item in menu.main_menu.items %}
-					<a href="{{ item.link }}" class="{{ item.class }}" target="{{ item.target }}">{{ item.title }}</a>
+					<a href="{{ item.link }}" class="{{ item.class }}" target="{{ item.target }}">{{ item.title|raw }}</a>
 				{% endfor %}
 			</ul>
 		</nav><!-- #site-navigation -->
@@ -40,7 +40,7 @@
 		<nav class="social-navigation" aria-label="{{ _e( 'Social Links Menu', 'twentynineteen' ) }}">
 			<ul id="social" class="social-links-menu">
 				{% for item in menu.social.items %}
-					<a href="{{ item.link }}" class="{{ item.class }}" target="{{ item.target }}"><span class="screen-reader-text">{{ item.title }}</span></a>
+					<a href="{{ item.link }}" class="{{ item.class }}" target="{{ item.target }}"><span class="screen-reader-text">{{ item.title|raw }}</span></a>
 				{% endfor %}
 			</ul>
 		</nav><!-- .social-navigation -->

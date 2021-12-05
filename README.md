@@ -2,10 +2,11 @@
 
 ## Introduction
 
-This is an implementation of the Twenty Nineteen Wordpress theme for wordpress-bundle.
+This is an implementation of the "Twenty Nineteen" Wordpress theme for wordpress-bundle.
 
-The "theme" concept has been removed on Wordpress Bundle, templates are now twig files located in /templates
-Sass and js files are compiled using Symfony Encore, source are in /assets, compiled files in /build
+The "theme" concept has been removed on Wordpress Bundle, templates are now twig files located in `/templates`
+
+Sass and js files are compiled using Symfony Encore, source are located in `/assets`, compiled files in `/public/build`
 
 ## Installation
 
@@ -72,4 +73,4 @@ WP_INSTALLED=1
 
 ### Frontpage display Symfony welcome screen
 
-Please visit Wordpress permalink settings page tu flush rewrite cache
+Please visit Wordpress [permalink settings page](https://127.0.0.1:8000/edition/wp-admin/options-permalink.php) and save to flush rewrite cache

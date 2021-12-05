@@ -52,13 +52,17 @@ NONCE_SALT=xxxxxx
 CREATE DATABASE dbname;
 ```
 
-#### 6 - Start server and install Wordpress
+#### 6 - Start server
 
 ```
 symfony serve
 ```
 
-#### 7 - Update .env.local
+#### 7 - Install Wordpress
+
+Navigate to https://127.0.0.1:8000 and follow the installation procedure
+
+#### 8 - Update .env.local
 
 ```dotenv
 WP_INSTALLED=1

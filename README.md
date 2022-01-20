@@ -10,63 +10,62 @@ Sass and js files are compiled using Symfony Encore, source are located in `/ass
 
 ## Installation
 
-#### 1 - Clone the repo
+#### Clone the repo
 
 ```shell
 $ git clone https://github.com/wearemetabolism/wordpress-bundle-demo.git my_site
 ```
 
-#### 2 - Install vendors
+#### Install vendors
 
 ```shell
 $ composer install && npm install
 ```
 
-#### 3 - Build assets
+#### Build assets
 
 ```shell
 $ npm run build
 ```
 
-#### 4 - Create .env.local
+#### Copy .env.local sample
 
-```dotenv
-###> metabolism/wordpress-bundle ###
-DATABASE_URL=mysql://user:pwd@localhost:3306/dbname
-TABLE_PREFIX=wp_
-
-## use https://roots.io/salts.html to generate salts
-AUTH_KEY=xxxxxx
-SECURE_AUTH_KEY=xxxxxx
-LOGGED_IN_KEY=xxxxxx
-NONCE_KEY=xxxxxx
-AUTH_SALT=xxxxxx
-SECURE_AUTH_SALT=xxxxxx
-LOGGED_IN_SALT=xxxxxx
-NONCE_SALT=xxxxxx
-###< metabolism/wordpress-bundle ###
+```shell
+$ cp .env.local.sample .env.local
 ```
 
-#### 5 - Create empty database
+#### Create empty database
 
 ```sql
 CREATE DATABASE dbname;
 ```
 
-#### 6 - Start server
+#### Update .env.local
 
-```
-symfony serve
+```shell
+$ nano .env.local
 ```
 
-#### 7 - Install Wordpress
+#### Start server
+
+```shell
+$ symfony serve
+```
+
+#### Install Wordpress
 
 Navigate to https://127.0.0.1:8000 and follow the installation procedure
 
-#### 8 - Update .env.local
+#### Update .env.local
 
 ```dotenv
 WP_INSTALLED=1
+```
+
+#### Clear cache
+
+```shell
+$ php bin/console cache:clear
 ```
 
 ## Troubleshooting

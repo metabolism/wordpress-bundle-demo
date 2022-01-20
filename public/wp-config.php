@@ -43,9 +43,10 @@ if (!env('APP_ENV') ) {
 Env::$options = Env::USE_ENV_ARRAY;
 
 $loader = new ConfigLoader();
-$loader->import(dirname(__DIR__) . '/config/packages/wordpress_bundle.yml');
+$loader->import(dirname(__DIR__) . '/config/packages/wordpress.yml');
 
 global $table_prefix;
 
 $table_prefix = env('TABLE_PREFIX')?:'wp_';
+
 require_once(ABSPATH . 'wp-settings.php');

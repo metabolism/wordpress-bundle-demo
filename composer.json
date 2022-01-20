@@ -19,7 +19,7 @@
         "symfony/framework-bundle": "5.4.*",
         "symfony/webpack-encore-bundle": "^1.11",
         "symfony/yaml": "5.4.*",
-        "metabolism/wordpress-bundle": "^1.5",
+        "metabolism/wordpress-bundle": "1.5.x-test-dev",
         "wpackagist-plugin/classic-editor": "^1.6",
         "wpackagist-plugin/advanced-custom-fields": "^5.11"
     },
@@ -35,7 +35,13 @@
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "symfony/flex": true,
+            "metabolism/wordpress-core-installer": true,
+            "metabolism/package-actions": true
+        }
     },
     "autoload": {
         "psr-4": {

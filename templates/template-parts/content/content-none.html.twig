@@ -16,9 +16,9 @@
 
 	<div class="page-content">
 		{% if fn('is_search') %}
-			<p>{{ _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentynineteen' ) }}</p>
+			<p>{{ _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentynineteen' )|raw }}</p>
 		{% else %}
-			<p>{{ _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'twentynineteen' ) }}</p>
+			<p>{{ _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'twentynineteen' )|raw }}</p>
 		{% endif %}
 		{{ search_form() }}
 	</div><!-- .page-content -->

@@ -1,6 +1,6 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /static
+    controller: App\Controller\AppController::staticAction
 
 _wordpress:
   resource: "@WordpressBundle/config/routing.php"

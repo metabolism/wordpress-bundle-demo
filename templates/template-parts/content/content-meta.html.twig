@@ -8,10 +8,9 @@
 
     <span class="posted-on"><time class="entry-date published updated" datetime="{{ post.date_gmt }}">{{ post.date }}</time></span>
 
-    {% set category = post.getTerm() %}
-    {% if category %}
+    {% if post.term %}
         <span class="cat-links">
-            <a href="{{ category.link }}">{{ category.title }}</a>
+            <a href="{{ post.term.link }}">{{ post.term.title }}</a>
         </span>
     {% endif %}
 {% endif %}

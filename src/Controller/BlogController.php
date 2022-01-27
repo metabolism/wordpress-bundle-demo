@@ -2,69 +2,77 @@
 
 namespace App\Controller;
 
-use Metabolism\WordpressBundle\Service\ContextService as Context;
+use Metabolism\WordpressBundle\Entity\Post;
+use Metabolism\WordpressBundle\Entity\Term;
 
+use Metabolism\WordpressBundle\Entity\User;
+use Metabolism\WordpressBundle\Service\PaginationService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BlogController extends AbstractController
 {
-	public function homeAction(Context $context)
+	public function homeAction(array $posts, PaginationService $paginationService)
 	{
-	    $context->addPagination();
-		return $this->render('index.html.twig', $context->toArray());
+		return $this->render('index.html.twig', [
+            'pagination'=>$paginationService->build(),
+            'posts'=>$posts
+        ]);
 	}
 
-	public function maintenanceAction(Context $context)
+	public function maintenanceAction()
 	{
-        $context->add('wp_title', 'Maintenance');
-		return $this->render('maintenance.html.twig', $context->toArray());
+		return $this->render('maintenance.html.twig', []);
 	}
 
-	public function pageAction(Context $context)
+	public function pageAction(Post $post)
 	{
-		$post = $context->getPost();
-
-		if( !$post ){
-
-			$response =  $this->render('404.html.twig', $context->toArray());
-			$response->setStatusCode(404);
-
-			return $response;
-		}
-
-		return $this->render('single.html.twig', $context->toArray());
+		return $this->render('single.html.twig', ['post'=>$post]);
 	}
 
-	public function guideAction(Context $context)
+	public function guideAction(Post $post)
 	{
-	    $post = $context->getPost();
-
-        if( !$post ){
-
-            $response =  $this->render('404.html.twig', $context->toArray());
-            $response->setStatusCode(404);
-
-            return $response;
-        }
-
-		return $this->render('single.html.twig', $context->toArray());
+		return $this->render('single.html.twig', ['post'=>$post]);
 	}
 
-	public function searchAction(Context $context)
+	public function searchAction(array $posts, PaginationService $paginationService)
 	{
-        $context->addPagination();
-        return $this->render('search.html.twig', $context->toArray());
+        return $this->render('search.html.twig', [
+            'pagination'=>$paginationService->build(),
+            'posts'=>$posts
+        ]);
 	}
 
-	public function guideArchiveAction(Context $context)
+	public function guideArchiveAction(array $posts, PaginationService $paginationService)
 	{
-        $context->addPagination();
-        return $this->render('archive.html.twig', $context->toArray());
+        return $this->render('archive.html.twig', [
+            'pagination'=>$paginationService->build(),
+            'posts'=>$posts
+        ]);
 	}
 
-	public function categoryAction(Context $context)
+	public function categoryAction(Term $term, array $posts, PaginationService $paginationService)
 	{
-        $context->addPagination();
-        return $this->render('archive.html.twig', $context->toArray());
+        return $this->render('archive.html.twig', [
+            'pagination'=>$paginationService->build(),
+            'posts'=>$posts,
+            'term'=>$term
+        ]);
 	}
+
+	public function authorAction(User $user, array $posts, PaginationService $paginationService)
+	{
+        return $this->render('archive.html.twig', [
+            'pagination'=>$paginationService->build(),
+            'posts'=>$posts,
+            'author'=>$user
+        ]);
+	}
+
+    public function errorAction()
+    {
+        $response = $this->render( '404.html.twig' );
+        $response->setStatusCode(404);
+
+        return $response;
+    }
 }

@@ -4,7 +4,7 @@
 ##                                           ##
 ###############################################
 
-version: 1.0
+version: 2.0
 
 #########################
 ##    Image options    ##
@@ -215,7 +215,6 @@ post_type: # https://developer.wordpress.org/reference/functions/register_post_t
       - title
       - excerpt
       - thumbnail
-      #- sticky
       #- editor
       #- author
       #- excerpt
@@ -380,6 +379,14 @@ security:
   rest_api: false
   xmlrpc: false
   pings: false
+
+###################
+##    Export    ##
+##################
+
+export:
+  copy:
+    /public/build : /build
 
 ################
 ##    Misc    ##

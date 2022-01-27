@@ -68,6 +68,16 @@ WP_INSTALLED=1
 $ php bin/console cache:clear
 ```
 
+## Features
+
+#### Export static version
+
+Enable Yoast SEO First to generate sitemap
+
+```shell
+$ php bin/console site:export
+```
+
 ## Troubleshooting
 
 ### Frontpage display Symfony welcome screen

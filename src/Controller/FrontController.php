@@ -15,7 +15,6 @@ class FrontController extends WordpressFrontController
 	 */
 	public function init()
 	{
-
         add_filter( 'post_class', function( $classes, $class, $post_id ) {
 
             $classes[] = 'entry';

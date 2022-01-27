@@ -269,10 +269,13 @@
     "wpackagist-plugin/classic-editor": {
         "version": "1.6.2"
     },
-    "wpackagist-plugin/debug-bar": {
-        "version": "1.1.2"
+    "wpackagist-plugin/query-monitor": {
+        "version": "3.8.2"
     },
-    "wpackagist-plugin/debug-bar-rewrite-rules": {
-        "version": "0.6.5"
+    "wpackagist-plugin/wordpress-seo": {
+        "version": "17.9"
+    },
+    "wpackagist-plugin/wp-smartcrop": {
+        "version": "2.0.5"
     }
 }

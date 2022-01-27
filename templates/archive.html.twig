@@ -16,7 +16,13 @@
 		<main id="main" class="site-main">
 
 			<header class="page-header">
-				<h1 class="page-title">{{ term.title }}</h1>
+				<h1 class="page-title">
+					{% if term|default %}
+						{{ term.title }}
+					{% elseif author|default %}
+						{{ author.display_name }}
+					{% endif %}
+				</h1>
 			</header><!-- .page-header -->
 
 			{% if posts|default() %}

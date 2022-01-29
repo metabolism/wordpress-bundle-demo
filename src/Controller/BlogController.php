@@ -19,11 +19,6 @@ class BlogController extends AbstractController
         ]);
 	}
 
-	public function maintenanceAction()
-	{
-		return $this->render('maintenance.html.twig', []);
-	}
-
 	public function pageAction(Post $post)
 	{
 		return $this->render('single.html.twig', ['post'=>$post]);
@@ -68,10 +63,18 @@ class BlogController extends AbstractController
         ]);
 	}
 
-    public function errorAction()
+    public function errorAction(\Throwable $exception)
     {
-        $response = $this->render( '404.html.twig' );
-        $response->setStatusCode(404);
+        $code = $exception->getCode();
+
+        if( $code == 503 )
+            $response = $this->render( 'maintenance.html.twig' );
+        else if( $code == 404 )
+            $response = $this->render( '404.html.twig' );
+        else
+            $response = $this->render( '500.html.twig', ['exception'=>$exception] );
+
+        $response->setStatusCode($code?:500);
 
         return $response;
     }

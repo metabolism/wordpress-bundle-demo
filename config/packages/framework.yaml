@@ -16,4 +16,4 @@ framework:
     php_errors:
         log: true
 
-    #error_controller: App\Controller\BlogController::errorAction
+    error_controller: App\Controller\BlogController::errorAction

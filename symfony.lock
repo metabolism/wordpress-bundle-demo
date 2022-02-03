@@ -26,6 +26,9 @@
     "metabolism/wordpress-core-installer": {
         "version": "1.1.1"
     },
+    "metabolism/wp-steroids": {
+        "version": "1.0.x-dev"
+    },
     "oscarotero/env": {
         "version": "v2.1.0"
     },

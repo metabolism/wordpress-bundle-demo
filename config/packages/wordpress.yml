@@ -175,8 +175,8 @@ acf:
 menu:
   depth: 1
   register:
-    footer: Footer
-    header: Header
+    main_menu: Main menu
+    social: Social
 
 
 ###################

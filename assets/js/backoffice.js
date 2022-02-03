@@ -4,4 +4,4 @@
  */
 
 // any CSS you require will output into a single css file (backoffice.css in this case)
-
+require('../css/style-components.scss');

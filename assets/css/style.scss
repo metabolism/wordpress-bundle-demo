@@ -104,6 +104,11 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 @import "sass/blocks/blocks";
 
+/* Components */
+
+@import "sass/components/text-image";
+@import "sass/components/title";
+
 /* Media */
 
 @import "sass/media/media";

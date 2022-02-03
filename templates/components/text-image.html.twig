@@ -1,0 +1,11 @@
+<div class="c-text-image">
+    <div class="c-text-image__text" style="background: {{ data.background_color }}">
+        <div class="c-text-image__text-inner">
+            {{ data.text|raw }}
+        </div>
+        <a href="">{{ data.link.title }}</a>
+    </div>
+    <div class="c-text-image__image">
+        <img src="{{ data.image }}"/>
+    </div>
+</div>

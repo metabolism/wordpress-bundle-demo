@@ -22,7 +22,7 @@
         "metabolism/wordpress-bundle": "2.0.x-dev",
         "wpackagist-plugin/classic-editor": "^1.6",
         "wpackagist-plugin/advanced-custom-fields": "^5.11",
-        "wpackagist-plugin/wordpress-seo": "17.*",
+        "wpackagist-plugin/wordpress-seo": "18.*",
         "wpackagist-plugin/wp-smartcrop": "2.*"
     },
     "require-dev": {

@@ -89,14 +89,12 @@ support:
 #headless:
 #  mapping: true
 
-## Allow multisite installation
-install-multisite: true
 
 ## Multisite configuration
-# multisite:
-#  subdomain_install: true
-#  shared_media: true
-#  clone_post: true
+multisite:
+  subdomain_install: false
+  shared_media: true
+  clone_post: true
 
 ## Declare constant
 #define:

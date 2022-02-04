@@ -29,10 +29,11 @@ class BlogController extends AbstractController
 		return $this->render('single.html.twig', ['post'=>$post]);
 	}
 
-	public function searchAction(array $posts, PaginationService $paginationService)
+	public function searchAction(array $posts, PaginationService $paginationService, $search)
 	{
         return $this->render('search.html.twig', [
             'pagination'=>$paginationService->build(),
+            'search_query'=>$search,
             'posts'=>$posts
         ]);
 	}

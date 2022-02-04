@@ -92,7 +92,6 @@ support:
 
 ## Multisite configuration
 multisite:
-  subdomain_install: false
   shared_media: true
   clone_post: true
 

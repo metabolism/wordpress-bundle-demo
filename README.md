@@ -8,6 +8,13 @@ The "theme" concept has been removed on Wordpress Bundle, templates are now twig
 
 Sass and js files are compiled using Symfony Encore, source are located in `/assets`, compiled files in `/public/build`
 
+## Documentation
+
+Full bundle documentation is available on [Gitbook](https://metabolism.gitbook.io/symfony-wordpress-bundle/)
+
+[![Doc - Gitbook](https://img.shields.io/badge/Doc-Gitbook-346ddb?style=for-the-badge&logo=gitbook&logoColor=fff)](https://metabolism.gitbook.io/symfony-wordpress-bundle/)
+
+
 ## Installation
 
 #### Clone the repo
@@ -66,16 +73,6 @@ WP_INSTALLED=1
 
 ```shell
 $ php bin/console cache:clear
-```
-
-## Features
-
-#### Export static version
-
-Enable Yoast SEO First to generate sitemap
-
-```shell
-$ php bin/console site:export
 ```
 
 ## Troubleshooting

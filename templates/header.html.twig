@@ -1,20 +1,10 @@
-<header id="masthead" class="{{ is_single and post.thumbnail ? 'site-header featured-image' : 'site-header' }}">
+{% if menu.footer|default() and menu.footer.items|length %}
 
-	<div class="site-branding-container">
-		{% include 'template-parts/header/site-branding.html.twig' %}
-	</div><!-- .site-branding-container -->
-
-	{% if is_single and post.thumbnail %}
-	<div class="site-featured-image">
-
-		<figure class="post-thumbnail">
-			<img src="{{ post.thumbnail.resize(1920,1080) }}" alt="{{ post.thumbnail.alt }}">
-		</figure>
-
-		<!-- .post-thumbnail -->
-		<div class="entry-header{{ post.comments|length ?  ' has-discussion' : ''}}">
-			{% include 'template-parts/header/entry-header.html.twig' %}
-		</div><!-- .entry-header -->
-	</div>
-	{% endif %}
-</header><!-- #masthead -->
+	<nav class="footer-navigation" aria-label="{{ _e( 'Footer Menu', 'twentynineteen' ) }}">
+		<ul id="footer" class="footer-menu">
+			{% for item in menu.footer.items %}
+				<a href="{{ item.link }}" class="{{ item.class }}" target="{{ item.target }}">{{ item.title }}</a>
+			{% endfor %}
+		</ul>
+	</nav><!-- .footer-navigation -->
+{% endif %}

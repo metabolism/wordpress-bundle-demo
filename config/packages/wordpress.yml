@@ -1,8 +1,10 @@
-###############################################
-##                                           ##
-##    Wordpress Bundle configuration file    ##
-##                                           ##
-###############################################
+##########################################################################
+##                                                                      ##
+##                Wordpress Bundle configuration file                   ##
+##                                                                      ##
+##    Doc : https://metabolism.gitbook.io/symfony-wordpress-bundle/     ##
+##                                                                      ##
+##########################################################################
 
 version: 2.0
 
@@ -12,12 +14,9 @@ version: 2.0
 
 image:
   compression: 90 #on the fly compression ration
-  show_meta: false #add metadata to Image entity
-  #return_format: url|id|object
   resize: #resize image on upload to save server space
     max_width: 1920
     max_height: 2160
-
 
 ###########################
 ##    Admin interface    ##
@@ -272,10 +271,10 @@ taxonomy: # https://developer.wordpress.org/reference/functions/register_taxonom
 ####################################
 
 ## Add post and taxonomy templates
-#template:
-#  page:
-#    coming_soon: 'Coming Soon'
-#    not_found: '404'
+template:
+  page:
+    coming_soon: 'Coming Soon'
+    not_found: '404'
 #  post:
 #    video: 'Video'
 #  taxonomy:
@@ -286,8 +285,8 @@ taxonomy: # https://developer.wordpress.org/reference/functions/register_taxonom
 #      video: 'Video'
 
 ## Add page states, like "homepage"
-#page_states:
-  #archive_guide: 'Archive des guides'
+page_states:
+  archive_guide: 'Guides archive'
 
 #################################
 ##    Database table viewer    ##
@@ -383,17 +382,21 @@ security:
 
 export:
   copy:
-    /public/build : /build
+    '/public/theme' : /theme
+    '/public/favicon' : /favicon
+    '/public/uploads' : /uploads
+
+##################
+##    Search    ##
+##################
+
+#search: # change search settings
+# use_metafields: false
+# posts_per_page: 12
 
 ################
 ##    Misc    ##
 ################
 
-domain_name: app # MO/PO traductions
-
-#search: # change search settings
-# posts_per_page: 12
-
-## controller name used when importing @WordpressBundle/config/routing.php
-extra_permastructs:
-  controller: BlogController
+gutenberg: false
+disable_update: true

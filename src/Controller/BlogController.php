@@ -2,16 +2,18 @@
 
 namespace App\Controller;
 
+use Metabolism\WordpressBundle\Entity\Blog;
 use Metabolism\WordpressBundle\Entity\Post;
 use Metabolism\WordpressBundle\Entity\Term;
 
 use Metabolism\WordpressBundle\Entity\User;
+use Metabolism\WordpressBundle\Service\BreadcrumbService;
 use Metabolism\WordpressBundle\Service\PaginationService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BlogController extends AbstractController
 {
-	public function homeAction(array $posts, PaginationService $paginationService)
+	public function homeAction(array $posts, Blog $blog, PaginationService $paginationService)
 	{
 		return $this->render('index.html.twig', [
             'pagination'=>$paginationService->build(),
@@ -19,9 +21,12 @@ class BlogController extends AbstractController
         ]);
 	}
 
-	public function pageAction(Post $post)
+	public function pageAction(Post $post, BreadcrumbService $breadcrumbService)
 	{
-		return $this->render('single.html.twig', ['post'=>$post]);
+		return $this->render('single.html.twig', [
+            'post'=>$post,
+            'breadcrumb'=>$breadcrumbService->build()
+        ]);
 	}
 
 	public function guideAction(Post $post)

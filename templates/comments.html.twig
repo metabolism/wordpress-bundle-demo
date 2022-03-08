@@ -38,7 +38,7 @@
 
 	{% if post.comment_count %}
 		<ol class="comment-list">
-			{% for comment in post.getComments %}
+			{% for comment in post.comments %}
 				<li id="comment-{{ comment.ID }}" class="comment {{ loop.index is odd ? 'odd thread-odd' : 'even thread-even' }} depth-1 parent">
 					{% include 'template-parts/content/content-comment.html.twig' with  { depth: 1 } %}
 				</li>

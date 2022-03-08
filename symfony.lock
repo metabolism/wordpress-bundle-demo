@@ -1,4 +1,7 @@
 {
+    "composer/installers": {
+        "version": "v1.12.0"
+    },
     "dflydev/dot-access-data": {
         "version": "v3.0.1"
     },

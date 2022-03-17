@@ -21,6 +21,14 @@ class BlogController extends AbstractController
         ]);
 	}
 
+	public function postAction(Post $post, BreadcrumbService $breadcrumbService)
+	{
+		return $this->render('single.html.twig', [
+            'post'=>$post,
+            'breadcrumb'=>$breadcrumbService->build()
+        ]);
+	}
+
 	public function pageAction(Post $post, BreadcrumbService $breadcrumbService)
 	{
 		return $this->render('single.html.twig', [

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="{{ locale|default('en') }}" class="utf8" prefix="og: http://ogp.me/ns#">
+<html lang="{{ blog.locale|default('en') }}" class="utf8" prefix="og: http://ogp.me/ns#">
 
 <head>
-	<meta charset="{{ bloginfo.charset }}" />
+	<meta charset="{{ blog.info.charset }}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="profile" href="https://gmpg.org/xfn/11" />
 
-	<title>{{ title|raw }}</title>
+	<title>{{ blog.title|raw }}</title>
 
 	{% block stylesheets %}
 		{{ encore_entry_link_tags('app') }}
@@ -15,7 +15,7 @@
 	{{ wp_head() }}
 </head>
 
-<body class="{{ body_class }}">
+<body class="{{ blog.body_class }}">
 
 <div id="page" class="site">
 
@@ -28,7 +28,7 @@
 		{% block body %}{% endblock body %}
 	</div>
 
-	{% if not maintenance_mode|default() %}
+	{% if not maintenance_mode|default %}
 
 		{% block footer %}
 			{% include 'footer.html.twig' %}

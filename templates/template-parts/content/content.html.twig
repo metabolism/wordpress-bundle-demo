@@ -9,7 +9,7 @@
  #
  #}
 
-<article id="post-{{ post.ID }}" class="{{ post.class }}">
+<article id="post-{{ post.ID }}" class="entry {{ post.class }}">
 	<header class="entry-header">
 		{% if post.sticky and fn('is_home') and not fn('is_paged') %}
 			<span class="sticky-post">{{ _x( 'Featured', 'post', 'twentynineteen' ) }}</span>

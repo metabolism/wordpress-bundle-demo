@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Metabolism\WordpressBundle\Entity\Blog;
 use Metabolism\WordpressBundle\Entity\Post;
+use Metabolism\WordpressBundle\Entity\PostCollection;
 use Metabolism\WordpressBundle\Entity\Term;
 
 use Metabolism\WordpressBundle\Entity\User;
@@ -13,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BlogController extends AbstractController
 {
-	public function homeAction(array $posts, Blog $blog, PaginationService $paginationService)
+	public function homeAction(PostCollection $posts, Blog $blog, PaginationService $paginationService)
 	{
 		return $this->render('index.html.twig', [
             'pagination'=>$paginationService->build(),
@@ -42,7 +43,7 @@ class BlogController extends AbstractController
 		return $this->render('single.html.twig', ['post'=>$post]);
 	}
 
-	public function searchAction(array $posts, PaginationService $paginationService, $search)
+	public function searchAction(PostCollection $posts, PaginationService $paginationService, $search)
 	{
         return $this->render('search.html.twig', [
             'pagination'=>$paginationService->build(),
@@ -51,7 +52,7 @@ class BlogController extends AbstractController
         ]);
 	}
 
-	public function guideArchiveAction(array $posts, PaginationService $paginationService)
+	public function guideArchiveAction(PostCollection $posts, PaginationService $paginationService)
 	{
         return $this->render('archive.html.twig', [
             'pagination'=>$paginationService->build(),
@@ -59,7 +60,7 @@ class BlogController extends AbstractController
         ]);
 	}
 
-	public function categoryAction(Term $term, array $posts, PaginationService $paginationService)
+	public function categoryAction(Term $term, PostCollection $posts, PaginationService $paginationService)
 	{
         return $this->render('archive.html.twig', [
             'pagination'=>$paginationService->build(),
@@ -68,7 +69,7 @@ class BlogController extends AbstractController
         ]);
 	}
 
-	public function authorAction(User $user, array $posts, PaginationService $paginationService)
+	public function authorAction(User $user, PostCollection $posts, PaginationService $paginationService)
 	{
         return $this->render('archive.html.twig', [
             'pagination'=>$paginationService->build(),

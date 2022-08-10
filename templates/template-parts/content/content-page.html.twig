@@ -9,7 +9,7 @@
  #
  #}
 
-<article id="post-{{ post.ID }}" class="{{ post.class }}">
+<article id="post-{{ post.ID }}" class="entry {{ post.class }}">
 
 	{% if not post.thumbnail %}
 		<header class="entry-header">
@@ -19,6 +19,10 @@
 
 	<div class="entry-content">
 		{{ post.content|raw }}
+	</div><!-- .entry-content -->
+
+	<div class="entry-content entry-content--custom_fields">
+		{{ post.custom_fields.text }}
 	</div><!-- .entry-content -->
 
 </article><!-- #post-{{ post.ID }} -->

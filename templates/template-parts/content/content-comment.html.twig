@@ -12,7 +12,7 @@
 </article><!-- .comment-body -->
 
 <div class="comment-reply">
-	{% if user %}
+	{% if blog.user %}
 		<a rel="nofollow" class="comment-reply-link" href="">
 			{{ __( 'Reply to %s' )|format(comment.author) }}
 		</a>

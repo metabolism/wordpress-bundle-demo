@@ -19,7 +19,7 @@
 	<section id="primary" class="content-area">
 		<main id="main" class="site-main">
 
-			{% if posts|default() %}
+			{% if posts|default %}
 				{# Load posts loop. #}
 				{% for post in posts %}
 					{% include 'template-parts/content/content.html.twig' %}

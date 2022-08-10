@@ -1,10 +1,10 @@
-# Wordpress Bundle for Symfony demo
+# WordPress Bundle for Symfony demo
 
 ## Introduction
 
-This is an implementation of the "Twenty Nineteen" Wordpress theme for wordpress-bundle.
+This is an implementation of the "Twenty Nineteen" WordPress theme for wordpress-bundle.
 
-The "theme" concept has been removed on Wordpress Bundle, templates are now twig files located in `/templates`
+The "theme" concept has been removed on WordPress Bundle, templates are now twig files located in `/templates`
 
 Sass and js files are compiled using Symfony Encore, source are located in `/assets`, compiled files in `/public/build`
 
@@ -59,7 +59,7 @@ $ nano .env.local
 $ symfony serve
 ```
 
-#### Install Wordpress
+#### Install WordPress
 
 Navigate to https://127.0.0.1:8000 and follow the installation procedure
 
@@ -79,4 +79,4 @@ $ php bin/console cache:clear
 
 ### Frontpage display Symfony welcome screen
 
-Please visit Wordpress [permalink settings page](https://127.0.0.1:8000/edition/wp-admin/options-permalink.php) and save to flush rewrite cache
+Please visit WordPress [permalink settings page](https://127.0.0.1:8000/edition/wp-admin/options-permalink.php) and save to flush rewrite cache

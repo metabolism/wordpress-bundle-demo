@@ -3,22 +3,22 @@
 <footer id="colophon" class="site-footer">
 	{% include 'template-parts/footer/footer-widgets.html.twig' %}
 	<div class="site-info">
-		{% if bloginfo.name|length %}
-			<a class="site-name" href="{{ home_url }}" rel="home">{{ bloginfo.name }}</a>,
+		{% if blog.info.name|length %}
+			<a class="site-name" href="{{ blog.home_url }}" rel="home">{{ blog.info.name }}</a>,
 		{% endif %}
 		<a href="https://wordpress.org/" class="imprint">
 			 {{ __( 'Proudly powered by %s.', 'twentynineteen' )|format('WordPress') }}
 		</a>
 
-		{% if privacy_policy_url %}
-			<a href="{{ privacy_policy_url }}" class="privacy-policy-link">{{ privacy_policy_title }}</a>
+		{% if blog.privacy_policy_url %}
+			<a href="{{ blog.privacy_policy_url }}" class="privacy-policy-link">{{ blog.privacy_policy_title }}</a>
 		{% endif %}
 
-		{% if menu.footer|default() and menu.footer.items|length %}
+		{% if blog.menu.footer|default and blog.menu.footer.items|length %}
 
 			<nav class="footer-navigation" aria-label="{{ _e( 'Footer Menu', 'twentynineteen' ) }}">
 				<ul id="footer" class="footer-menu">
-					{% for item in menu.footer.items %}
+					{% for item in blog.menu.footer.items %}
 						<a href="{{ item.link }}" class="{{ item.class }}" target="{{ item.target }}">{{ item.title }}</a>
 					{% endfor %}
 				</ul>

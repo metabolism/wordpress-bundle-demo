@@ -25,7 +25,7 @@
 				</h1>
 			</header><!-- .page-header -->
 
-			{% if posts|default() %}
+			{% if posts|default %}
 				{# Load posts loop. #}
 				{% for post in posts %}
 					{% include 'template-parts/content/content.html.twig' %}

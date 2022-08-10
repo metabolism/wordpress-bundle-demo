@@ -1,0 +1,23 @@
+{
+  "name": "metabolism/void",
+  "type": "wordpress-theme",
+  "version": "2.0.0",
+  "description": "Void theme to ensure minimal loading",
+  "license": "GPL-3.0-or-later",
+  "keywords": [
+    "framework",
+    "symfony",
+    "wordpress",
+    "plugin",
+    "wordpress-theme"
+  ],
+  "authors": [
+    {
+      "name": "Jérome Barbato"
+    }
+  ],
+  "minimum-stability": "stable",
+  "suggest": {
+    "metabolism/wordpress-bundle": "This package should be used along with metabolism/wordpress-bundle"
+  }
+}

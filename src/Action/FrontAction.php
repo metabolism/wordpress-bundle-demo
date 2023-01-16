@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace App\Action;
 
-use Metabolism\WordpressBundle\Controller\FrontController as WordpressFrontController;
+use Metabolism\WordpressBundle\Action\FrontAction as WordpressFrontAction;
 
-class FrontController extends WordpressFrontController
+class FrontAction extends WordpressFrontAction
 {
 	/**
 	 * Execute code when the front is loaded

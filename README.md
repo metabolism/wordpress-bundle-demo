@@ -68,6 +68,9 @@ Navigate to https://127.0.0.1:8000 and follow the installation procedure
 ```dotenv
 WP_INSTALLED=1
 ```
+#### Enable "WordPress on Steroids" plugins
+
+Login to the admin and go to Plugins/Installed plugins
 
 #### Clear cache
 

@@ -1,18 +1,25 @@
 {
     "devDependencies": {
-        "@symfony/stimulus-bridge": "^3.0.0",
-        "@symfony/webpack-encore": "^1.8.1",
-        "core-js": "^3.20.3",
-        "regenerator-runtime": "^0.13.9",
-        "sass": "^1.49.0",
-        "sass-loader": "^12.4.0",
-        "stimulus": "^3.0.1",
+        "dotenv-webpack": "^8.0.1",
+        "@symfony/stimulus-bridge": "^3.2.1",
+        "@symfony/webpack-encore": "^4.2.0",
+        "webpack": "^5.75.0",
+        "core-js": "^3.27.1",
+        "@babel/core": "^7.20.12",
+        "regenerator-runtime": "^0.13.11",
+        "sass": "^1.57.1",
+        "sass-loader": "^13.2.0",
+        "stimulus": "^3.2.1",
         "webpack-notifier": "^1.15.0"
+    },
+    "engines": {
+        "npm": "8.19.3",
+        "node": "16.19.0"
     },
     "license": "UNLICENSED",
     "private": true,
     "scripts": {
-        "dev-server": "encore dev-server",
+        "dev-server": "encore dev-server --public http://192.168.1.84:8080 --host 0.0.0.0",
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"

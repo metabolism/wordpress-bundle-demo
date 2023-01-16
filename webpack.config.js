@@ -44,10 +44,18 @@ Encore
      * https://symfony.com/doc/current/frontend.html#adding-more-features
      */
     .cleanupOutputBeforeBuild()
-    .enableBuildNotifications()
+    //.enableBuildNotifications()
     .enableSourceMaps(!Encore.isProduction())
     // enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
+
+    .configureDevServerOptions(options => {
+        options.allowedHosts = 'all';
+        options.client = {
+            logging : 'warn',
+            overlay: false
+        };
+    })
 
     .configureBabel((config) => {
         config.plugins.push('@babel/plugin-proposal-class-properties');
@@ -61,6 +69,25 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
+    //.enablePostCssLoader()
+
+    /*.copyFiles({
+        from: './assets/media/images',
+
+        // optional target path, relative to the output dir
+        to: 'images/[path][name].[ext]',
+
+        // if versioning is enabled, add the file hash too
+        //to: 'images/[path][name].[hash:8].[ext]',
+
+        // only copy files matching this pattern
+        //pattern: /\.(png|jpg|jpeg)$/
+    })*/
+
+    /*.addPlugin(new Dotenv({
+        path: './.env.local',
+        systemvars: true
+    }))*/
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()

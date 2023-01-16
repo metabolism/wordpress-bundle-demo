@@ -8,33 +8,28 @@ use Metabolism\WordpressBundle\Entity\PostCollection;
 use Metabolism\WordpressBundle\Entity\Term;
 
 use Metabolism\WordpressBundle\Entity\User;
-use Metabolism\WordpressBundle\Service\BreadcrumbService;
-use Metabolism\WordpressBundle\Service\PaginationService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BlogController extends AbstractController
 {
-	public function homeAction(PostCollection $posts, Blog $blog, PaginationService $paginationService)
+	public function homeAction(PostCollection $posts, Blog $blog)
 	{
 		return $this->render('index.html.twig', [
-            'pagination'=>$paginationService->build(),
             'posts'=>$posts
         ]);
 	}
 
-	public function postAction(Post $post, BreadcrumbService $breadcrumbService)
+	public function postAction(Post $post)
 	{
 		return $this->render('single.html.twig', [
-            'post'=>$post,
-            'breadcrumb'=>$breadcrumbService->build()
+            'post'=>$post
         ]);
 	}
 
-	public function pageAction(Post $post, BreadcrumbService $breadcrumbService)
+	public function pageAction(Post $post)
 	{
 		return $this->render('single.html.twig', [
-            'post'=>$post,
-            'breadcrumb'=>$breadcrumbService->build()
+            'post'=>$post
         ]);
 	}
 
@@ -43,36 +38,32 @@ class BlogController extends AbstractController
 		return $this->render('single.html.twig', ['post'=>$post]);
 	}
 
-	public function searchAction(PostCollection $posts, PaginationService $paginationService, $search)
+	public function searchAction(PostCollection $posts, $search)
 	{
         return $this->render('search.html.twig', [
-            'pagination'=>$paginationService->build(),
             'search_query'=>$search,
             'posts'=>$posts
         ]);
 	}
 
-	public function guideArchiveAction(PostCollection $posts, PaginationService $paginationService)
+	public function guideArchiveAction(PostCollection $posts)
 	{
         return $this->render('archive.html.twig', [
-            'pagination'=>$paginationService->build(),
             'posts'=>$posts
         ]);
 	}
 
-	public function categoryAction(Term $term, PostCollection $posts, PaginationService $paginationService)
+	public function categoryAction(Term $term, PostCollection $posts)
 	{
         return $this->render('archive.html.twig', [
-            'pagination'=>$paginationService->build(),
             'posts'=>$posts,
             'term'=>$term
         ]);
 	}
 
-	public function authorAction(User $user, PostCollection $posts, PaginationService $paginationService)
+	public function authorAction(User $user, PostCollection $posts)
 	{
         return $this->render('archive.html.twig', [
-            'pagination'=>$paginationService->build(),
             'posts'=>$posts,
             'author'=>$user
         ]);

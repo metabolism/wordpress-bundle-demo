@@ -3,12 +3,13 @@
  #
  # @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  #
+ # @var post \Metabolism\WordpressBundle\Entity\Post
+ #
  # @package WordPress
  # @subpackage Twenty_Nineteen
  # @since 1.0.0
  #
  #}
-
 <article id="post-{{ post.ID }}" class="entry {{ post.class }}">
 
 	{% if not post.thumbnail %}
@@ -17,12 +18,24 @@
 		</header>
 	{% endif %}
 
+	<!-- .entry-content -->
 	<div class="entry-content">
-		{{ post.content|raw }}
-	</div><!-- .entry-content -->
+		{% if post.hasBlocks %}
+			<div class="blocks">
+				{% for block in post.blocks %}
+					<div class="block block--{{ block.name|handle }}">
+						{{ block.content|raw }}
+					</div>
+				{% endfor %}
+			</div>
+		{% else %}
+			{{ post.content|raw }}
+		{% endif %}
+	</div>
 
 	<div class="entry-content entry-content--custom_fields">
 		{{ post.custom_fields.text }}
-	</div><!-- .entry-content -->
+	</div>
+	<!-- .entry-content -->
 
 </article><!-- #post-{{ post.ID }} -->

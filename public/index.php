@@ -1,22 +1,19 @@
 <?php
 
+use App\CacheKernel;
 use App\Kernel;
-use Symfony\Component\Dotenv\Dotenv;
-use Symfony\Component\ErrorHandler\Debug;
-use Symfony\Component\HttpFoundation\Request;
 
-require dirname(__DIR__).'/vendor/autoload.php';
+require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
 
-(new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
+return function (array $context) {
 
-if ($_SERVER['APP_DEBUG']) {
-    umask(0000);
+    $kernel = new Kernel($context['APP_ENV'], (bool) $context['APP_DEBUG']);
 
-    Debug::enable();
-}
+    $is_logged_in = strpos(serialize($_COOKIE), 'logged_in') !== false;
+    $is_dev = $context['APP_ENV'] != 'prod' || $context['APP_DEBUG'];
 
-$kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
-$httpRequest = Request::createFromGlobals();
-$response = $kernel->handle($httpRequest);
-$response->send();
-$kernel->terminate($httpRequest, $response);
+    if( (!$is_dev && !$is_logged_in) || 'PURGE' === ($_SERVER['REQUEST_METHOD']??'GET') )
+        $kernel = new CacheKernel($kernel);
+
+    return $kernel;
+};

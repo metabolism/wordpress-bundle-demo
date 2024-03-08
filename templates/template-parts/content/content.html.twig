@@ -24,6 +24,7 @@
 	{% if post.thumbnail %}
 		<figure class="post-thumbnail">
 			<img src="{{ post.thumbnail.resize(1568) }}" alt="{{ post.thumbnail.alt }}">
+			<img src="{{ post.thumbnail.resize(0,800) }}" alt="{{ post.thumbnail.alt }}">
 		</figure><!-- .post-thumbnail -->
 	{% endif %}
 

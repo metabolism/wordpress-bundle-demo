@@ -111,7 +111,7 @@ wordpress:
     #  - video
     #  - gallery
 
-  ## Use Wordpress as a headless cms
+  ## Use WordPress as a headless cms
   #headless:
   #  mapping: true
 
@@ -343,17 +343,15 @@ wordpress:
   ##    Database table viewer    ##
   #################################
 
-  #table:
-  #  newsletter:
-  #    page_title: Newsletter
-  #    menu_title: Newsletter
-  #    column_title: id
-  #    export: false
-  #    columns:
-  #      name: Name
-  #      email: Email
-  #      company: Company
-  #      type: Type
+  table:
+    newsletter:
+      page_title: Newsletter
+      menu_title: Newsletter
+      column_title: id
+      export: true
+      columns:
+        name: Name
+        email: Email
   #  contact:
   #    page_title: Contact
   #    menu_title: Contact

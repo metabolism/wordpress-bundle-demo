@@ -2,6 +2,7 @@
     "type": "project",
     "license": "proprietary",
     "version": "2.2.0",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "repositories": [
         {
@@ -22,11 +23,12 @@
         "symfony/framework-bundle": "5.4.*",
         "symfony/webpack-encore-bundle": "^1.14",
         "symfony/yaml": "5.4.*",
-        "metabolism/wordpress-bundle": "^2.2.0",
+        "metabolism/wordpress-bundle": "2.3.x-dev",
         "wpackagist-plugin/classic-editor": "^1.6",
         "wpackagist-plugin/advanced-custom-fields": "^6.2.1",
         "wpackagist-plugin/wordpress-seo": "^21.0",
-        "wpackagist-plugin/wp-smartcrop": "2.*"
+        "wpackagist-plugin/wp-smartcrop": "2.*",
+        "intervention/image": "^3.0"
     },
     "require-dev": {
         "symfony/debug-bundle": "5.4.*",

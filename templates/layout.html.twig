@@ -9,7 +9,8 @@
 	<title>{{ blog.title|raw }}</title>
 
 	{% block stylesheets %}
-		{{ encore_entry_link_tags('app') }}
+		{{ vite_entry_link_tags('style') }}
+		{{ vite_entry_link_tags('print') }}
 	{% endblock %}
 
 	{{ wp_head() }}
@@ -40,7 +41,7 @@
 {{ wp_footer() }}
 
 {% block javascripts %}
-	{{ encore_entry_script_tags('app') }}
+	{{ vite_entry_script_tags('app') }}
 {% endblock %}
 
 </body>

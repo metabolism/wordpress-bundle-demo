@@ -1,6 +1,9 @@
-.idea
-composer.lock
-package-lock.json
+/.idea
+
+###> pentatrion/vite-bundle ###
+/node_modules/
+/public/build/
+###< pentatrion/vite-bundle ###
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -11,13 +14,6 @@ package-lock.json
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
-
-###> symfony/webpack-encore-bundle ###
-/node_modules/
-/public/build/
-npm-debug.log
-yarn-error.log
-###< symfony/webpack-encore-bundle ###
 
 ###> metabolism/wordpress-bundle ###
 /public/uploads/*

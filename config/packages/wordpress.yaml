@@ -14,13 +14,19 @@ wordpress:
 
   gutenberg:
     replace_reset_styles: true
-    #remove_core_block: true
+    remove_core_block: true
+    remove_plugin_block:
+      - lloc/msls-widget-block
+      - yoast/faq-block
+      - yoast/how-to-block
+      - yoast-seo/breadcrumbs
+    remove_core_block_patterns: true
     disable_classic_theme_styles: true
     remove_block_library: true
     load_remote_block_patterns: false
     #block_editor_style: '/build/bundle.css'
     #block_editor_script: '/blocks.js'
-    render_template: 'blocks/{name}.html.twig'
+    render_template: 'block/{name}.html.twig'
     preview_image: true
 
 
@@ -29,7 +35,9 @@ wordpress:
   #########################
 
   image:
-    compression: 90 #on the fly compression ratio
+    compression: 95 #on the fly compression ratio
+    svg: true
+    max_size: 1
     resize: #resize image on upload to save server space
       max_width: 1920
       max_height: 2160
@@ -55,34 +63,43 @@ wordpress:
 
   ## Hide page from submenu
   remove_submenu_page:
-  #themes.php: nav-menus.php
+    - themes.php: site-editor.php?path=/patterns
+    #- themes.php: nav-menus.php
+
+  ## Handle Customize experience on the server-side.
+  ## https://developer.wordpress.org/reference/classes/wp_customize_manager/
+  wp_customize:
+    remove_section:
+      - custom_css
 
   ## Customize WYSIWYG Editor TinyMCE Buttons
   ##https://www.tiny.cloud/docs/advanced/editor-control-identifiers/
-  mce_buttons:
-    - formatselect
-    - bold
-    - italic
-    - underline
-    - sup
-    - strikethrough
-    - superscript
-    - subscript
-    - bullist
-    - numlist
-    - blockquote
-    - hr
-    - table
-    - alignleft
-    - aligncenter
-    - alignright
-    - alignjustify
-    - link
-    - unlink
-    - wp_more
-    - spellchecker
-    - wp_adv
-    - dfw
+  mce:
+    css: '/static/editor_style.css'
+    buttons:
+      - formatselect
+      - bold
+      - italic
+      - underline
+      - sup
+      - strikethrough
+      - superscript
+      - subscript
+      - bullist
+      - numlist
+      - blockquote
+      - hr
+      - table
+      - alignleft
+      - aligncenter
+      - alignright
+      - alignjustify
+      - link
+      - unlink
+      - wp_more
+      - spellchecker
+      - wp_adv
+      - dfw
 
   #editor_style: backoffice.css
 
@@ -100,12 +117,13 @@ wordpress:
   ## Add post type support
   ## https://developer.wordpress.org/reference/functions/post_type_supports/
   post_type_support:
-    page: excerpt #add excerpt to page
+    page:
+      - excerpt #add excerpt to page
 
   ## Add theme support
   ## https://developer.wordpress.org/reference/functions/add_theme_support/
   theme_support:
-    - disable-layout-styles
+    #- core-block-patterns
     - thumbnail #add thumbnails to post
     #- post-formats:
     #  - video
@@ -135,9 +153,8 @@ wordpress:
       autoload: true #autoload options
     user_settings:
       gallery_height: 210
-    options_page: #add option pages https://www.advancedcustomfields.com/resources/options-page/
-      - 'Global'
-      - 'Translations'
+    block:
+      api_version: 3
     input:
       lock_max_length: false
     toolbars: #customize wysiwyg toolbar
@@ -176,8 +193,10 @@ wordpress:
           - blockquote
           - superscript
           - subscript
+          - forecolor
           - bullist
           - numlist
+          - table
           - link
           - alignjustify
           - pastetext
@@ -225,6 +244,11 @@ wordpress:
       post_types:
         - page
         - guide
+      fields:
+        title:
+          type: text
+        text:
+          type: textarea
 
 
   ##########################
@@ -343,15 +367,17 @@ wordpress:
   ##    Database table viewer    ##
   #################################
 
-  table:
-    newsletter:
-      page_title: Newsletter
-      menu_title: Newsletter
-      column_title: id
-      export: true
-      columns:
-        name: Name
-        email: Email
+  #table:
+  #  newsletter:
+  #    page_title: Newsletter
+  #    menu_title: Newsletter
+  #    column_title: id
+  #    export: false
+  #    columns:
+  #      name: Name
+  #      email: Email
+  #      company: Company
+  #      type: Type
   #  contact:
   #    page_title: Contact
   #    menu_title: Contact

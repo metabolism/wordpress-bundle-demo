@@ -1,95 +1,116 @@
 {
-    "type": "project",
-    "license": "proprietary",
-    "version": "2.2.0",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type":"composer", "url":"https://wpackagist.org"
-        }
-    ],
-    "require": {
-        "php": ">=7.4",
-        "ext-ctype": "*",
-        "ext-iconv": "*",
-        "ext-json": "*",
-        "ext-mbstring": "*",
-        "ext-openssl": "*",
-        "symfony/console": "5.4.*",
-        "symfony/runtime": "5.4.*",
-        "symfony/dotenv": "5.4.*",
-        "symfony/flex": "^1.17|^2",
-        "symfony/framework-bundle": "5.4.*",
-        "symfony/webpack-encore-bundle": "^1.14",
-        "symfony/yaml": "5.4.*",
-        "metabolism/wordpress-bundle": "2.3.x-dev",
-        "wpackagist-plugin/classic-editor": "^1.6",
-        "wpackagist-plugin/advanced-custom-fields": "^6.2.1",
-        "wpackagist-plugin/wordpress-seo": "^21.0",
-        "wpackagist-plugin/wp-smartcrop": "2.*",
-        "intervention/image": "^3.0"
-    },
-    "require-dev": {
-        "symfony/debug-bundle": "5.4.*",
-        "symfony/web-profiler-bundle": "5.4.*",
-        "symfony/stopwatch": "5.4.*",
-        "wpackagist-plugin/query-monitor": "3.*"
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": {
-            "*": "dist"
-        },
-        "sort-packages": true,
-        "allow-plugins": {
-            "composer/installers": true,
-            "symfony/flex": true,
-            "metabolism/wordpress-core-installer": true,
-            "metabolism/package-actions": true,
-            "symfony/runtime": true
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "App\\Tests\\": "tests/"
-        }
-    },
-    "replace": {
-        "symfony/polyfill-ctype": "*",
-        "symfony/polyfill-iconv": "*",
-        "symfony/polyfill-php72": "*"
-    },
-    "scripts": {
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        },
-        "post-install-cmd": [
-            "@auto-scripts"
-        ],
-        "post-update-cmd": [
-            "@auto-scripts"
-        ]
-    },
-    "conflict": {
-        "symfony/symfony": "*"
-    },
-    "extra": {
-        "symfony": {
-            "allow-contrib": false,
-            "require": "5.4.*"
-        },
-        "installer-paths": {
-            "public/wp-bundle/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
-            "public/wp-bundle/plugins/{$name}/": ["type:wordpress-plugin"],
-            "public/wp-bundle/themes/{$name}/": ["type:wordpress-theme"],
-            "public/edition/": ["type:wordpress-core"]
-        }
+  "name": "metabolism/wordpress-bundle-demo",
+  "type": "project",
+  "license": "MIT",
+  "description": "WordPress boilerplate with Symfony, easier configuration",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "authors": [
+    {
+      "name": "Jérome Barbato",
+      "email": "jerome.barbato@gmail.com",
+      "homepage": "https://github.com/jerome-barbato"
     }
+  ],
+  "support": {
+    "issues": "https://github.com/metabolism/wordpress-bundle/issues"
+  },
+  "repositories": [
+    {
+      "type":"composer", "url":"https://connect.advancedcustomfields.com"
+    },
+    {
+      "type":"composer", "url":"https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "php": ">=8.2",
+    "ext-ctype": "*",
+    "ext-gd": "*",
+    "ext-iconv": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-mysqli": "*",
+    "ext-openssl": "*",
+    "symfony/cache": "^7.3",
+    "symfony/console": "^7.3",
+    "symfony/dotenv": "^7.3",
+    "symfony/flex": "^2",
+    "symfony/framework-bundle": "^7.3",
+    "symfony/runtime": "^7.3",
+    "symfony/web-link": "^7.3",
+    "symfony/yaml": "^7.3",
+    "symfony/monolog-bundle": "^3.0",
+    "wpackagist-plugin/wordpress-seo": "^25.3",
+    "wpackagist-plugin/wp-smartcrop": "^2.0",
+    "metabolism/wordpress-bundle": "3.0.x-dev",
+    "pentatrion/vite-bundle": "^8.1",
+    "wpengine/advanced-custom-fields-pro": "^6.4.0"
+  },
+  "require-dev": {
+    "symfony/debug-bundle": "^7.3",
+    "symfony/web-profiler-bundle": "^7.3",
+    "symfony/stopwatch": "^7.3",
+    "wpackagist-plugin/query-monitor": "3.*"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": {
+      "*": "dist"
+    },
+    "sort-packages": true,
+    "allow-plugins": {
+      "composer/installers": true,
+      "symfony/flex": true,
+      "metabolism/wordpress-core-installer": true,
+      "metabolism/package-actions": true,
+      "symfony/runtime": true,
+      "ffraenz/private-composer-installer": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Tests\\": "tests/"
+    }
+  },
+  "replace": {
+    "symfony/polyfill-ctype": "*",
+    "symfony/polyfill-iconv": "*",
+    "symfony/polyfill-php72": "*"
+  },
+  "scripts": {
+    "auto-scripts": {
+      "cache:clear": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    },
+    "post-install-cmd": [
+      "@auto-scripts"
+    ],
+    "post-update-cmd": [
+      "@auto-scripts"
+    ]
+  },
+  "conflict": {
+    "symfony/symfony": "*"
+  },
+  "extra": {
+    "symfony": {
+      "allow-contrib": false,
+      "require": "^7.3"
+    },
+    "private-composer-installer": {
+      "dotenv-name": ".env.local"
+    },
+    "installer-paths": {
+      "public/wp-bundle/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "public/wp-bundle/plugins/{$name}/": ["type:wordpress-plugin"],
+      "public/wp-bundle/themes/{$name}/": ["type:wordpress-theme"],
+      "public/edition/": ["type:wordpress-core"]
+    }
+  }
 }
